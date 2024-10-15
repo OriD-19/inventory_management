@@ -7,4 +7,4 @@ accesslog = '-'
 capture_output = True
 timeout = 180
 
-worker_class = 'gevent'
+#worker_class = 'gevent'

@@ -4,3 +4,4 @@ __pycache__/
 
 instance/
 .webassests-cache
+migrations/

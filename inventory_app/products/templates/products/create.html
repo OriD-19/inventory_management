@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+<!--product_name = db.Column(db.String(100), nullable=False)
+    stock = db.Column(db.Integer, nullable=False, default=0)
+    description = db.Column(db.Text)
+    img = db.Column(db.String(100))
+    category_id = db.Column(db.Integer, db.ForeignKey('category.category_id'))
+
+    category = db.relationship('Category', uselist=False, back_populates='products', lazy=True)
+    # get all the transactions associated with a product
+    transactions = db.relationship('Transaction', back_populates='product', lazy=True) -->
+
+{% block title %}Create a new product{% endblock %}
+
+{% block content %}
+  <h1>Create a new product</h1>
+  <form method="post">
+    <!-- a label and field for each column in the products table -->
+
+    <label for="product_name">Product Name</label>
+    <input type="text" name="product_name" id="product_name" required>
+
+    <label for="stock">Stock</label>
+    <input type="number" name="stock" id="stock">
+
+    <label for="description">Description</label>
+    <input type="text" name="description" id="description">
+
+    <label for="img">Image</label>
+    <input type="text" name="img" id="img">
+
+    <label for="category">Select a Category</label>
+    <select name="category" id="category">
+        {% for category in categories %}
+            <option value="{{ category.category_id }}">{{ category.category_name }}</option>
+        {% endfor %}
+    </select>
+
+    <button type="submit">Create</button>
+
+{% endblock %}

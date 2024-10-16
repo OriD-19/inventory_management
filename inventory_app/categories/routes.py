@@ -8,6 +8,8 @@ categories = Blueprint('categories', __name__, template_folder='templates')
 @categories.route('/')
 def index():
     categories = Category.query.all()
+    for category in categories:
+        print(category.products)
     return render_template('categories/index.html', categories=categories)
 
 @categories.route('/create', methods=['GET', 'POST'])

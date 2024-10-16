@@ -23,3 +23,8 @@ El sistema contará con las siguientes vistas para el usuario:
     - Administración de usuarios con acceso al sistema
     - Creación de nuevas transacciones
     - Vista para la generación de reportes de inventario
+
+### Sistema de alertas
+Luego de cada transacción, el sistema verificará si el stock de algún producto 
+es menor al mínimo establecido (un umbral ingresado por el usuario). En caso de 
+que así sea, se enviará una alerta al correo electrónico del usuario que ha colocado la alerta.

@@ -1,4 +1,5 @@
 from flask import request, render_template, redirect, url_for, Blueprint
+from flask_login import login_required
 
 from inventory_app.app import db
 from inventory_app.categories.models import Category
@@ -6,6 +7,7 @@ from inventory_app.categories.models import Category
 categories = Blueprint('categories', __name__, template_folder='templates')
 
 @categories.route('/')
+@login_required
 def index():
     categories = Category.query.all()
     for category in categories:
@@ -13,6 +15,7 @@ def index():
     return render_template('categories/index.html', categories=categories)
 
 @categories.route('/create', methods=['GET', 'POST'])
+@login_required
 def create():
     if request.method == 'POST':
         category = request.form['category']

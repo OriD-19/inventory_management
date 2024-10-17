@@ -13,6 +13,11 @@ def index():
         print(product.category.category_name)
     return render_template('products/index.html', products=products)
 
+@products.route('/<int:product_id>')
+def detail(product_id):
+    product = Product.query.get(product_id)
+    return render_template('products/detail.html', product=product)
+
 @products.route('/create', methods=['GET', 'POST'])
 def create():
     if request.method == 'POST':

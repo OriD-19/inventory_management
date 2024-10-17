@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Alerts{% endblock %}
+
+{% block content %}
+    <h1>Home</h1>
+    <p>Welcome to the alerts page!</p>
+
+<ul>
+    {% for alert in alerts %}
+        <li>{{ alert }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

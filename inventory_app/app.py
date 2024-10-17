@@ -39,6 +39,7 @@ def create_app():
     login_manager.init_app(app)
 
     @login_manager.user_loader
+
     def load_user(user_id):
         from inventory_app.account.models import User
 
@@ -51,11 +52,13 @@ def create_app():
     from inventory_app.categories.routes import categories
     from inventory_app.products.routes import products
     from inventory_app.account.routes import account
+    from inventory_app.alerts.routes import alerts
 
     app.register_blueprint(products, url_prefix='/products')
     app.register_blueprint(transactions, url_prefix='/transactions')
     app.register_blueprint(categories, url_prefix='/categories')
     app.register_blueprint(account, url_prefix='/account')
+    app.register_blueprint(alerts, url_prefix='/alerts')
 
 
     migrate = Migrate(app, db)

@@ -28,3 +28,13 @@ El sistema contará con las siguientes vistas para el usuario:
 Luego de cada transacción, el sistema verificará si el stock de algún producto 
 es menor al mínimo establecido (un umbral ingresado por el usuario). En caso de 
 que así sea, se enviará una alerta al correo electrónico del usuario que ha colocado la alerta.
+
+
+## Checklist
+- [x] Creación de la estructura de carpetas
+- [x] Creación de la base de datos
+- [x] Creación de las clases de los modelos
+- [x] Creación de las rutas de la aplicación
+- [ ] Creación de las vistas de la aplicación
+- [ ] Configuración del sistema de usuarios
+- [ ] Configuración de la generación de reportes en PDF

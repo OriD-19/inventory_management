@@ -1,7 +1,7 @@
 from inventory_app.app import db
 from flask_login import UserMixin
 
-class User(db.Model, UserMixin):
+class User(UserMixin, db.Model):
     """
     Original SQL code:
     CREATE TABLE "user" (
@@ -18,17 +18,22 @@ class User(db.Model, UserMixin):
     __tablename__ = "user";
 
     # sqlalchemy orm mapping
-    username = db.Column(db.String(50), primary_key=True)
+    user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    username = db.Column(db.String(50), nullable=False, unique=True)
     email = db.Column(db.String(50), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
     user_role_id = db.Column(db.Integer, db.ForeignKey("user_role.user_role_id"), nullable=False)
 
+    # types of user: admin, authorized
     user_role = db.relationship("User_Role", uselist=False, back_populates="users", lazy=True)
     alerts = db.relationship("Alert", back_populates="user", lazy=True)
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.created_at}')"
+
+    def get_id(self):
+        return self.user_id
 
 class User_Role(db.Model):
     """

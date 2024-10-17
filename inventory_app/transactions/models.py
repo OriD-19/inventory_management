@@ -1,6 +1,6 @@
 from inventory_app.app import db
 
-class Transaction(db.Model):
+class TransactionHistory(db.Model):
     """
     Original sql code:
     "transaction_id"	INTEGER NOT NULL,
@@ -24,9 +24,9 @@ class Transaction(db.Model):
     product_id = db.Column(db.Integer, db.ForeignKey('product.product_id'), nullable=False)
 
     product = db.relationship('Product', uselist=False, back_populates='transactions', lazy=True)
-    operation = db.relationship('Operation_Type', uselist=False, back_populates='transactions', lazy=True)
+    operation = db.relationship('OperationType', uselist=False, back_populates='transactions', lazy=True)
 
-class Operation_Type(db.Model):
+class OperationType(db.Model):
     """
     Original sql code:
     "operation_type_id"	INTEGER NOT NULL,
@@ -41,4 +41,4 @@ class Operation_Type(db.Model):
     operation_name = db.Column(db.String(100), nullable=False)
 
     # get all the transactions from a certain type (in/out)
-    transactions = db.relationship('Transaction', back_populates='operation', lazy=True)
+    transactions = db.relationship('TransactionHistory', back_populates='operation', lazy=True)

@@ -16,7 +16,7 @@ class Product(db.Model):
     __tablename__ = 'product'
 
     # sql alchemy ORM translation
-    product_id = db.Column(db.Integer, primary_key=True)
+    product_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     product_name = db.Column(db.String(100), nullable=False)
     stock = db.Column(db.Integer, nullable=False, default=0)
     description = db.Column(db.Text)

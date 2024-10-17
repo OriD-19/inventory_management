@@ -1,5 +1,5 @@
 from flask import flash, request, render_template, redirect, url_for, Blueprint, request
-from flask_login import login_required, logout_user, login_user
+from flask_login import login_required, logout_user, login_user, user_logged_in, current_user
 
 from inventory_app.app import db
 from inventory_app.app import bcrypt
@@ -8,11 +8,22 @@ from inventory_app.account.models import User
 
 account = Blueprint('account', __name__, template_folder="templates")
 
-"""
-There is no signup form exposed to the public
-This endpoint is going to be avaiable ONLY to the admin user
-"""
+# only for administrators
+@account.route('/manageUsers', methods=['GET'])
+@login_required
+def all_users():
+    # render all users
+
+    if current_user.user_role != "admin":
+        flash("You are not authorized to view this page.")
+        return redirect(url_for('core.index'))
+
+    users = User.query.all()
+    return render_template('account/all_users.html', users=users)
+
+
 @account.route('/registerUser', methods=['GET', 'POST'])
+@login_required
 def register_user():
 
     if request.method == 'POST':
@@ -54,7 +65,7 @@ def login():
         if user and bcrypt.check_password_hash(user.password, password):
             login_user(user)
             flash('Login successful!')
-            return redirect(url_for('categories.index'))
+            return redirect(url_for('core.index'))
 
         flash('Login failed. Please check your username and password.')
         return redirect(url_for('account.login'))
@@ -63,6 +74,12 @@ def login():
 
 @account.route('/logout')
 def logout():
+
+    if not user_logged_in:
+        # redirect to the login page
+        return redirect(url_for('account.login')) 
+
     logout_user()
+    flash("You have been logged out.")
     return redirect(url_for('account.login'))
 

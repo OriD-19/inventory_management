@@ -38,3 +38,4 @@ que así sea, se enviará una alerta al correo electrónico del usuario que ha c
 - [ ] Creación de las vistas de la aplicación
 - [ ] Configuración del sistema de usuarios
 - [ ] Configuración de la generación de reportes en PDF
+- [ ] Configuración del sistema de alertas

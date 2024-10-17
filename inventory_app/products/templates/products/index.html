@@ -6,14 +6,14 @@ Inventory-app
 
 {% block content %}
     <h1>Products</h1>
-    <table class="table">
+    <table class="table" border=1>
         <thead>
             <tr>
                 <th>Product ID</th>
                 <th>Product Name</th>
-                <th>Product Description</th>
-                <th>Product Price</th>
-                <th>Product Quantity</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Stock</th>
             </tr>
         </thead>
         <tbody>
@@ -21,11 +21,13 @@ Inventory-app
                 <tr>
                     <td>{{ product.id }}</td>
                     <td>{{ product.product_name }}</td>
-                    <td>{{ product.product_description }}</td>
-                    <td>{{ product.product_price }}</td>
-                    <td>{{ product.product_quantity }}</td>
+                    <td>{{ product.description }}</td>
+                    <td>{{ product.price }}</td>
+                    <td>{{ product.stock }}</td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+
+    <h2><a href="{{ url_for('products.create') }}">Create a new product</a></h2>
 {% endblock %}

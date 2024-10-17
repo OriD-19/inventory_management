@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 import os
@@ -10,6 +10,9 @@ from google.cloud.sql.connector import Connector, IPTypes
 db = SQLAlchemy()
 connector = Connector()
 bcrypt = Bcrypt()
+
+def check_admin(user):
+    return user.user_role.user_role == "admin"
 
 def get_connection():
     conn = connector.connect(
@@ -39,11 +42,17 @@ def create_app():
     login_manager.init_app(app)
 
     @login_manager.user_loader
-
     def load_user(user_id):
         from inventory_app.account.models import User
 
         return User.query.get(user_id)
+
+    def unauthorized_handler():
+        flash("You must be logged in to view this page.")
+        return redirect(url_for('account.login'))
+
+
+    login_manager.unauthorized_handler(unauthorized_handler)
 
     bcrypt.init_app(app)
 

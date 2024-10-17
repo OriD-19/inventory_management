@@ -6,6 +6,31 @@
     <title>Flask - {% block title %}{% endblock %}</title>
 </head>
 <body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('core.index') }}">Home</a></li>
+                <li><a href="{{ url_for('account.login') }}">Login</a></li>
+                <li><a href="{{ url_for('account.logout') }}">Logout</a></li>
+                <li><a href="{{ url_for('products.index') }}">Products</a></li>
+                <li><a href="{{ url_for('categories.index') }}">Categories</a></li>
+            </ul>
+        </nav>
+
+        <ul>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            {% endwith %}
+        </ul>
+    </header>
+
     {% block content %}{% endblock %}
 </body>
 </html>

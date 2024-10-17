@@ -52,3 +52,6 @@ class User_Role(db.Model):
     user_role = db.Column(db.String(50), unique=True, nullable=False)
 
     users = db.relationship("User", back_populates="user_role", lazy=True)
+
+    def __repr__(self):
+        return f"<User Role {self.user_role}>"

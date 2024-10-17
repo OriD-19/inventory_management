@@ -53,12 +53,14 @@ def create_app():
     from inventory_app.products.routes import products
     from inventory_app.account.routes import account
     from inventory_app.alerts.routes import alerts
+    from inventory_app.core.routes import core
 
     app.register_blueprint(products, url_prefix='/products')
     app.register_blueprint(transactions, url_prefix='/transactions')
     app.register_blueprint(categories, url_prefix='/categories')
     app.register_blueprint(account, url_prefix='/account')
     app.register_blueprint(alerts, url_prefix='/alerts')
+    app.register_blueprint(core, url_prefix='/')
 
 
     migrate = Migrate(app, db)

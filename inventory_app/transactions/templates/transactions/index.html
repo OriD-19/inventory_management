@@ -1,31 +1,54 @@
-{% extends 'base.html' %}
-
-{% block title %}
-Inventory-app
-{% endblock %}
-
-{% block content %}
-    <h1>Transactions</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Transaction ID</th>
-                <th>Product</th>
-                <th>Quantity</th>
-                <th>Transaction Type</th>
-                <th>Transaction Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for transaction in transactions %}
-                <tr>
-                    <td>{{ transaction.id }}</td>
-                    <td>{{ transaction.product }}</td>
-                    <td>{{ transaction.quantity }}</td>
-                    <td>{{ transaction.transaction_type }}</td>
-                    <td>{{ transaction.transaction_date }}</td>
-                </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Inventario</title>
+        <link rel="stylesheet" href="{{ url_for('.static', filename='css/historial.css') }}">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="user">
+                <img src="{{ url_for('.static', filename='img/usuario.png') }}" alt="Admin">
+            <span>Admin</span>
+        </div>
+        <nav>
+            <ul>
+                    <li><a href="{{ url_for('core.index') }}"><img src="{{ url_for ('.static', filename='img/hogar.png')}}" alt="Inicio"></a></li>
+                    <li><a href="{{ url_for('transactions.create') }}"><img src="{{ url_for ('.static', filename='img/agregar.png')}}" alt="Agregar"></a></li>
+                    <li><a href="{{ url_for('transactions.index_in') }}"><img src="{{ url_for ('.static', filename='img/lista.png')}}" alt="Menú"></a></li>
+                    <li><a href="{{ url_for('core.index') }}"><img src="{{ url_for ('.static', filename='img/ajustes.png')}}" alt="Configuración"></a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="main-content">
+        <h1>Historial</h1>
+        <div class="tabs">
+                <button class="active"><a href="{{ url_for('transactions.index_in' ) }}">Entrada de productos</a></button>
+                <button><a href="{{ url_for('transactions.index_out' ) }}">Salida de productos</a></button>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID de producto</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th>Fecha y hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions %}
+                        <tr>
+                            <td>{{ transaction.product_id }}</td>
+                            <td>{{ transaction.product.product_name }}</td>
+                            <td>{{ transaction.product_quantity }}</td>
+                            <td>{{ transaction.date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

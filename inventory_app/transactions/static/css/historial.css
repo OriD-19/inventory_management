@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: #f2c8c8;
+}
+
+.sidebar {
+    background-color: #D1495B;
+    width: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: white;
+}
+
+.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.user img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    margin: 20px 0;
+}
+
+nav ul li a {
+    display: block;
+}
+
+nav ul li img {
+    width: 30px;
+    height: 30px;
+}
+
+.main-content {
+    width: 85%;
+    padding: 30px;
+    background-color: #ffeaea;
+}
+
+h1 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.tabs button {
+    background-color: white;
+    color: #D1495B;
+    border: 2px solid #D1495B;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.tabs button.active {
+    background-color: #D1495B;
+    color: white;
+}
+
+.tabs button:hover {
+    background-color: #D1495B;
+    color: white;
+}
+
+.table-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background-color: #D1495B;
+    color: white;
+}
+
+thead th {
+    padding: 15px;
+    font-size: 16px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #f2c8c8;
+}
+
+tbody td {
+    padding: 15px;
+    font-size: 14px;
+}
+
+tbody tr:hover {
+    background-color: #f5baba;
+}

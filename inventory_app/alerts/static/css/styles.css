@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --fuente: "Poppins", sans-serif;
+    --color-principal: #D1495B;
+    --color-fuente: #000000;
+    --color-fondo:#FFECEF;
+    --color-bloques: #D9D9D9;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 15%;
+    background-color: var(--color-principal);
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
+}
+
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    color: var(--color-fuente);
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+}
+
+.profile p {
+    margin-top: 30%;
+}
+
+/* Iconos del menú lateral */
+#profile-icon {
+    background-image: url('../img/usuario.png');
+    padding: 7vh;
+    width: 80px;
+    height: 80px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+}
+
+.nav {
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav a {
+    display: block;
+    width: 45px;
+    height: 45px;
+    margin: 20px 0;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Iconos con IDs */
+#inicio {
+    background-image: url('../img/hogar.png');
+}
+
+#operacion {
+    background-image: url('../img/agregar.png');
+}
+
+#historial {
+    background-image: url('../img/lista.png');
+}
+
+#ajustes {
+    background-image: url('../img/ajustes.png');
+}
+
+.boton:hover{
+    background-color: var(--color-bloques);
+    color: var(--color-fuente);
+}
+
+.alertas {
+    margin-left: 15%;
+    padding: 20px;
+    background-color: var(--color-fondo);
+    height: 100vh;
+}
+
+h1 {
+    margin-left: 5%;
+    margin-bottom: 20px;
+}
+
+.menu-ajustes {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-left: 5%;
+}
+
+.boton {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+.ajustes-contenido {
+    background-color: var(--color-bloques);
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    margin-left: 5%;
+}
+
+h2 {
+    margin: 10px 0;
+}
+
+p {
+    margin: 10px 0;
+}
+
+.alerta-boton {
+    background-color: var(--color-fondo);
+    color: var(--color-fuente);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    border: solid 1px var(--color-fuente);
+    
+}
+
+.alerta-boton:hover {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border: solid 1px var(--color-fuente);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin: 0.7%;
+    align-items: center;
+}

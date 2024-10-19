@@ -12,7 +12,7 @@ import smtplib
 from email.mime.text import MIMEText
 import os
 
-alerts = Blueprint('alerts', __name__, template_folder='templates')
+alerts = Blueprint('alerts', __name__, template_folder='templates', static_folder='static')
 
 @alerts.route('/')
 @login_required
@@ -42,7 +42,7 @@ def create():
         flash(f"Alert for product {product_id} created by user {username}")
         return redirect(url_for('alerts.index'))
 
-    return render_template('alerts/create.html')
+    return render_template('alerts/create.html', products=Product.query.all())
 
 def send_email(from_user: User, to_user: User, product: Product):
     s = smtplib.SMTP('smtp.gmail.com', 587)

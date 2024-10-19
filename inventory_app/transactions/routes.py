@@ -14,7 +14,7 @@ def index():
 
 @transactions.route('/new', methods=['GET', 'POST'])
 @login_required
-def new():
+def create():
     if request.method == 'POST':
         transaction = TransactionHistory(
             product_id=request.form['product_id'],

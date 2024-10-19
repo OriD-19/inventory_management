@@ -1,16 +1,62 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="es">
 
-{% block title %}Create alert{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustes</title>
+        <link rel="stylesheet" href="{{ url_for('.static', filename='css/styles.css') }}">
+</head>
 
-{% block content %}
-    <h1>Create</h1>
-    <p>Create a new alert!</p>
+<body>
+    <div class="sidebar">
+        <div class="profile">
+            <div id="profile-icon"></div>
+            <p>Admin</p>
+        </div>
+        <nav class="nav">
+            <ul>
+                    <a href="{{ url_for('core.index') }}" id="inicio"></a></li>
+                    <a href="{{ url_for('transactions.create') }}" id="operacion"></a></li>
+                    <a href="{{ url_for('transactions.index') }}" id="historial"></a></li>
 
-    <form action="/create" method="post">
-        <label for="alert">Alert:</label>
-        <input type="text" id="alert" name="alert">
+                    <!-- Change this thing when we have the account page configured -->
+                    <a href="{{ url_for('core.index') }}" id="ajustes"></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="alertas">
+        <h1>Ajustes</h1>
+        <div class="menu-ajustes">
+            <button class="boton">Alertas de stock</button>
+            <button class="boton">Administrar usuarios</button>
+            <button class="boton">Sistema</button>
+        </div>
+
+        <div class="ajustes-contenido">
+            <form action="#" method="post">
+                <h2>Notificar si el stock de un producto es bajo</h2>
+                <p>Si desea recibir una alerta de stock bajo de un producto, seleccione la siguiente opción:</p>
+                <input type="checkbox" name="alerta-activa" value="alerta activa">Deseo recibir alertas de stock bajo
+                <br>
+
+                <h2>Inventario - Cantidad de stock*</h2>
+                <p>Indique de qué producto le gustaría recibir alertas</p>
+                <select name="product_id" id="product_id">
+                        {% for product in products %}
+                            <option value="{{ product.product_id }}">{{ product.product_name }}</option>
+                        {% endfor %}
+                    </select>
+
+                <p>Especifique la cantidad de producto que considere bajo stock, para enviar alerta</p>
+                <input type="number" placeholder="Cantidad mínima">
+                <button class="alerta-boton">Recibir alerta</button>
+            </form>
 
 
-        <button type="submit">Create</button>
-    </form>
-{% endblock %}
+        </div>
+    </div>
+</body>
+
+</html>

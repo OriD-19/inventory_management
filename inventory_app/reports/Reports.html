@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantalla de Reportes</title>
+    <link rel="stylesheet" href="StyleReports.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="../alerts/static/img/usuario.png" alt="Usuario" class="profile-img">
+                <p>Admin</p>
+            </div>
+            <div class="menu">
+                <div class="icon">
+                    <img src="../alerts/static/img/hogar.png" alt="Inicio">
+                </div>
+                <p>Inicio</p>
+
+                <div class="icon">
+                    <img src="../alerts/static/img/agregar.png" alt="Añadir">
+                </div>
+                <p>Añadir</p>
+
+                <div class="icon">
+                    <img src="../alerts/static/img/lista.png" alt="Lista">
+                </div>
+                <p>Lista</p>
+
+                <div class="icon">
+                    <img src="../alerts/static/img/ajustes.png" alt="Configuración">
+                </div>
+                <p>Configuración</p>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <h1>Reportes</h1>
+
+            <div class="report-tabs">
+                <button class="tab active">General</button>
+                <button class="tab">Avanzado</button>
+                <button class="tab">Personalizado</button>
+            </div>
+
+            <!-- Gráficos -->
+            <div class="charts-section">
+                <h2>Ventas</h2>
+                <div class="charts">
+                    <div class="chart">
+                        <h3>Gráfico Productos destacados del mes</h3>
+                        <div class="bar-chart">
+                            <img src="../reports/img/Grafico.png" alt="Gráfico Productos destacados del mes" style="width:90%; height:90%;">
+                        </div>
+                    </div>
+                    <div class="chart">
+                        <h3>Gráfico Productos Irrelevantes del mes</h3>
+                        <div class="bar-chart">
+                            <img src="../reports/img/grafico.png" alt="Gráfico Productos destacados del mes" style="width:90%; height:90%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

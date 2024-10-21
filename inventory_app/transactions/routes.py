@@ -11,13 +11,13 @@ transactions = Blueprint('transactions', __name__, template_folder='templates', 
 @login_required
 def index_in():
     transactions = TransactionHistory.query.filter_by(operation_type_id=1).all()
-    return render_template('transactions/index.html', transactions=transactions)
+    return render_template('transactions/index.html', transactions=transactions, out=False)
 
 @transactions.route('/out')
 @login_required
 def index_out():
     transactions = TransactionHistory.query.filter_by(operation_type_id=2).all()
-    return render_template('transactions/index.html', transactions=transactions)
+    return render_template('transactions/index.html', transactions=transactions, out=True)
 
 @transactions.route('/create', methods=['GET', 'POST'])
 @login_required
@@ -30,6 +30,6 @@ def create():
         )
         db.session.add(transaction)
         db.session.commit()
-        return redirect(url_for('transactions.index'))
+        return redirect(url_for('transactions.index_in'))
 
     return render_template('transactions/create.html', products=Product.query.all(), transaction_types=OperationType.query.all())

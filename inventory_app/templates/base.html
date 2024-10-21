@@ -3,35 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask - {% block title %}{% endblock %}</title>
+    <title>Administrador de inventario - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/baseStyles.css') }}">
+    {% block styles %}{% endblock %}
 </head>
 <body>
 
-    <header>
-        <nav>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Añadir sección para mostrar los mensajes flash -->
+
+    <div class="sidebar">
+        <div class="profile">
+            <div id="profile-icon"></div>
+            <p>Admin</p>
+        </div>
+        <nav class="nav">
             <ul>
-                <li><a href="{{ url_for('core.index') }}">Inicio</a></li>
-                <li><a href="{{ url_for('account.login') }}">Login</a></li>
-                <li><a href="{{ url_for('account.logout') }}">Logout</a></li>
-                <li><a href="{{ url_for('products.index') }}">Productos</a></li>
-                <li><a href="{{ url_for('categories.index') }}">Categorías</a></li>
-                <li><a href="{{ url_for('transactions.index_in') }}">Transacciones</a></li>
+                <li><a href="{{ url_for('core.index') }}" id="inicio"></a></li>
+                <li><a href="{{ url_for('transactions.create') }}" id="operacion"></a></li>
+                <li><a href="{{ url_for('transactions.index_in') }}" id="historial"></a></li>
+
+                <!-- Change this thing when we have the account page configured -->
+                <li><a href="{{ url_for('core.index') }}" id="ajustes"></a></li>
             </ul>
         </nav>
+    </div>
 
-        <ul>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                <ul>
-                    {% for message in messages %}
-                        <li>{{ message }}</li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-            {% endwith %}
-        </ul>
-    </header>
-
-    {% block content %}{% endblock %}
+    <div class="container-base">
+        {% block content %}{% endblock %}
+    </div>
 </body>
 </html>

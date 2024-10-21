@@ -27,7 +27,7 @@ def get_connection():
     return conn
 
 def create_app():
-    app = Flask(__name__, template_folder='templates')
+    app = Flask(__name__, template_folder='templates', static_folder='static')
     app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://"
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
         "creator": get_connection,

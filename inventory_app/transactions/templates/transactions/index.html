@@ -24,8 +24,8 @@
     <div class="main-content">
         <h1>Historial</h1>
         <div class="tabs">
-                <button class="active"><a href="{{ url_for('transactions.index_in' ) }}">Entrada de productos</a></button>
-                <button><a href="{{ url_for('transactions.index_out' ) }}">Salida de productos</a></button>
+                <button class="{{ 'active' if not out else '' }}"><a href="{{ url_for('transactions.index_in' ) }}">Entrada de productos</a></button>
+                <button class="{{ 'active' if out else '' }}"><a href="{{ url_for('transactions.index_out' ) }}">Salida de productos</a></button>
         </div>
         <div class="table-container">
             <table>

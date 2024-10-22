@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Principal</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="admin-profile">
+            <img src="admin-icon.png" alt="Admin">
+            <p>Admin</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="registrar_entrada.html"><i class="fas fa-plus"></i> Nueva Operación</a></li>
+                <li><a href="salida.html"><i class="fas fa-minus"></i> Salida de Producto</a></li>
+                <li><a href="historial.html"><i class="fas fa-history"></i> Historial</a></li>
+                <li><a href="ajustes.html"><i class="fas fa-cog"></i> Ajustes</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <main>
+        <section class="inventory-section">
+            <h2>Productos en inventario</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>No. de ID</th>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody id="inventoryTable">
+                
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Gestión de Inventario</p>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <script>
+        const productos = JSON.parse(localStorage.getItem('productos'));
+
+        const inventoryTable = document.getElementById('inventoryTable');
+
+        productos.forEach(producto => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${producto.id}</td>
+                <td>${producto.nombre}</td>
+                <td>${producto.cantidad}</td>
+            `;
+            inventoryTable.appendChild(row);
+        });
+    </script>
+</body>
+</html>

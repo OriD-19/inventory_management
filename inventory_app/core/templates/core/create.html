@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/core/create.css') }}">
+{% endblock %}
+
+{% block title %}Crear{% endblock %}
+
+{% block content %}
+<h1>Crear elementos</h1>
+
+<div class="content-section">
+    <h2>Transacciones</h2>
+
+    <div class="elements">
+        <a class="element-card" href="{{ url_for('transactions.create_in') }}">
+            <box-icon type="solid" name='plus-square'></box-icon>
+            <span>Nueva transacción de entrada</span>
+        </a>
+        <a class="element-card" href="{{ url_for('transactions.create_out') }}">
+            <box-icon type="solid" name='minus-square'></box-icon>
+            <span>Nueva transacción de salida</span>
+        </a>
+    </div>
+
+    <hr>
+
+    <h2>Productos</h2>
+    <div class="elements">
+        <a class="element-card" href="{{ url_for('products.create') }}">
+            <box-icon type="solid" name='layer-plus'></box-icon>
+            <span>Nuevo producto</span>
+        </a>
+    </div>
+
+    <hr>
+
+    <h2>Alertas</h2>
+    <div class="elements">
+        <a class="element-card" href="{{ url_for('alerts.create') }}">
+            <box-icon type="solid" name='bell-plus'></box-icon>
+            <span>Nueva transacción de entrada</span>
+        </a>
+    </div>
+
+</div>
+
+
+{% endblock %}

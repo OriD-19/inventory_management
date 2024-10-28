@@ -9,101 +9,25 @@
 
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: var(--fuente);
-}
-
-/* Sidebar Styles */
-.sidebar {
-    width: 15%;
-    background-color: var(--color-principal);
-    height: 100vh;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 20px;
-}
-
-.profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-    margin-bottom: 50px;
-    color: var(--color-fuente);
-    width: 80px;
-    height: 80px;
-    background-size: cover;
-    background-position: center;
-}
-
-.profile p {
-    margin-top: 30%;
-}
-
-/* Iconos del menú lateral */
-#profile-icon {
-    background-image: url('../img/usuario.png');
-    padding: 7vh;
-    width: 80px;
-    height: 80px;
-    background-size: cover;
-    background-position: center;
-    border-radius: 50%;
-}
-
-.nav {
-    margin-top: 75px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.nav a {
-    display: block;
-    width: 45px;
-    height: 45px;
-    margin: 20px 0;
-    background-size: cover;
-    background-position: center;
-}
-
-/* Iconos con IDs */
-#inicio {
-    background-image: url('../img/hogar.png');
-}
-
-#operacion {
-    background-image: url('../img/agregar.png');
-}
-
-#historial {
-    background-image: url('../img/lista.png');
-}
-
-#ajustes {
-    background-image: url('../img/ajustes.png');
-}
-
 .boton:hover{
     background-color: var(--color-bloques);
     color: var(--color-fuente);
 }
 
 .alertas {
-    margin-left: 15%;
-    padding: 20px;
+    padding: 5rem 2rem;
     background-color: var(--color-fondo);
-    height: 100vh;
+    width: 90%;
+    margin: 0 auto;
 }
 
-h1 {
+h1,p {
     margin-left: 5%;
     margin-bottom: 20px;
+}
+
+h1+p {
+    font-style: italic;
 }
 
 .menu-ajustes {
@@ -135,7 +59,8 @@ h2 {
     margin: 10px 0;
 }
 
-p {
+label {
+    display: block;
     margin: 10px 0;
 }
 
@@ -163,6 +88,7 @@ input, select{
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 1.3em;
 }
 
 input[type="checkbox"] {

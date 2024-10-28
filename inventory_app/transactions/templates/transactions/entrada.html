@@ -1,0 +1,43 @@
+{% extends 'base.html' %}    
+
+{% block title %}Salida de Producto{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('.static', filename='css/salida.css') }}">
+{% endblock %}
+
+{% block content %}
+<main>
+    <section class="form-section">
+        <h2>Registrar Entrada de Producto</h2>
+        <form id="salidaForm" method="POST" action="{{ url_for('transactions.create_in') }}">
+
+            <div class="form-group">
+                <label for="producto">Producto:</label>
+                <p>{{ errors.get('product', '') }}</p>
+                <select id="producto" name="product_id" required>
+                    <option value="" disabled selected>Seleccione un producto</option>
+                    {% for product in products %}
+                        <option value="{{ product.product_id }}">{{ product.product_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="cantidad">Cantidad a ingresar:</label>
+                <p>{{ errors.get('quant', '') }}</p>
+                <input type="number" id="cantidad" name="product_quantity" min="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha">Fecha de entrada (hoy):</label>
+                <p>{{ errors.get('date', '') }}</p>
+                <input type="date" id="fecha" name="fecha">
+            </div>
+
+            <button type="submit" class="submit-btn">Registrar Entrada</button>
+        </form>
+    </section>
+</main>
+{% endblock %}
+

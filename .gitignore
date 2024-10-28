@@ -5,3 +5,6 @@ __pycache__/
 instance/
 .webassests-cache
 migrations/
+
+*.svg
+inventory_app/static/fonts/

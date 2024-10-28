@@ -9,31 +9,25 @@
 {% block content %}
 
 <div class="alertas">
-    <h1>Ajustes</h1>
-    <div class="menu-ajustes">
-        <button class="boton">Alertas de stock</button>
-        <button class="boton">Administrar usuarios</button>
-        <button class="boton">Sistema</button>
-    </div>
+    <h1>Alertas</h1>
+    <p>La alerta se enviará el correo del usuario actual</p>
 
     <div class="ajustes-contenido">
         <form action="#" method="post">
-            <h2>Notificar si el stock de un producto es bajo</h2>
-            <p>Si desea recibir una alerta de stock bajo de un producto, seleccione la siguiente opción:</p>
-            <input type="checkbox" name="alerta-activa" value="alerta activa">Deseo recibir alertas de stock bajo
-            <br>
-
             <h2>Inventario - Cantidad de stock*</h2>
-            <p>Indique de qué producto le gustaría recibir alertas</p>
-            <select name="product_id" id="product_id">
-                {% for product in products %}
-                <option value="{{ product.product_id }}">{{ product.product_name }}</option>
-                {% endfor %}
-            </select>
 
-            <p>Especifique la cantidad de producto que considere bajo stock, para enviar alerta</p>
-            <input type="number" placeholder="Cantidad mínima">
-            <button class="alerta-boton">Recibir alerta</button>
+            <form action="{{ url_for('alerts.create') }}">
+                <label for="product_id">Indique de qué producto le gustaría recibir alertas</label>
+                <select name="product_id" id="product_id">
+                    {% for product in products %}
+                        <option value="{{ product.product_id }}">{{ product.product_name }}</option>
+                    {% endfor %}
+                </select>
+
+                <label for="min_quant">Especifique la cantidad de producto que considere bajo stock, para enviar una alerta. Cuando el producto baje de esta cantidad, recibirá un correo electrónico</label>
+                <input id="min_quant" type="number" name="min_product_stock" placeholder="Cantidad mínima">
+                <button type="submit" class="alerta-boton">Crear Alerta</button>
+            </form>
         </form>
 
 

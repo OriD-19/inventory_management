@@ -1,45 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador de inventario - {% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/baseStyles.css') }}">
-    {% block styles %}{% endblock %}
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Administrador de inventario - {% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/baseStyles.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/boxicons.min.css') }}">
+        {% block styles %}{% endblock %}
+    </head>
+    <body>
 
-    {% with messages = get_flashed_messages() %}
+        {% with messages = get_flashed_messages() %}
         {% if messages %}
-            <div class="flash-messages">
-                {% for message in messages %}
-                    <div class="flash-message">{{ message }}</div>
-                {% endfor %}
-            </div>
-        {% endif %}
-    {% endwith %}
-
-    <!-- Añadir sección para mostrar los mensajes flash -->
-
-    <div class="sidebar">
-        <div class="profile">
-            <div id="profile-icon"></div>
-            <p>Admin</p>
+        <div class="flash-messages">
+            {% for message in messages %}
+            <div class="flash-message">{{ message }}</div>
+            {% endfor %}
         </div>
-        <nav class="nav">
-            <ul>
-                <li><a href="{{ url_for('core.index') }}" id="inicio"></a></li>
-                <li><a href="{{ url_for('transactions.create') }}" id="operacion"></a></li>
-                <li><a href="{{ url_for('transactions.index_in') }}" id="historial"></a></li>
+        {% endif %}
+        {% endwith %}
 
-                <!-- Change this thing when we have the account page configured -->
-                <li><a href="{{ url_for('core.index') }}" id="ajustes"></a></li>
-            </ul>
-        </nav>
-    </div>
+        <!-- Añadir sección para mostrar los mensajes flash -->
 
-    <div class="container-base">
-        {% block content %}{% endblock %}
-    </div>
-</body>
+        <div class="sidebar">
+            <div class="profile">
+                <a href="{{ url_for('account.login') }}">
+                    <box-icon name="user" type="solid"></box-icon>
+                    <span>{{ current_user.username }}</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="{{ url_for('core.index') }}" class="nav-link">
+                    <box-icon type='solid' name='home'></box-icon>
+                    <span>Inicio</span>
+                </a>
+
+                <a href="{{ url_for('products.index') }}" class="nav-link">
+                    <box-icon type='solid' name='package'></box-icon>
+                    <span>Productos</span>
+                </a>
+
+                <a href="{{ url_for('transactions.index_in') }}" class="nav-link">
+                    <box-icon name='transfer-alt'></box-icon>
+                    <span>Transacciones</span>
+                </a>
+
+                <a href="{{ url_for('core.create') }}" class="nav-link">
+                    <box-icon type='solid' name='file-plus'></box-icon>
+                    <span>Crear</span>
+                </a>
+
+                <!-- Enlace de ajustes -->
+                <a href="{{ url_for('account.login') }}" class="nav-link">
+                    <box-icon type='solid' name='cog'></box-icon>
+                    <span>Ajustes</span>
+                </a>
+            </nav>
+
+            <div class="logout">
+                <a href="{{ url_for('account.logout') }}">
+                    <box-icon name='log-out'></box-icon>
+                    <span>Salir</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="container-base">
+            {% block content %}{% endblock %}
+        </div>
+
+        <script defer>
+            const sidebar = document.querySelector('.sidebar');
+
+        sidebar.addEventListener('mouseenter', () => {
+            sidebar.classList.add('active');
+        });
+
+        sidebar.addEventListener('mouseleave', () => {
+            sidebar.classList.remove('active');
+        });
+        </script>
+
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    </body>
 </html>

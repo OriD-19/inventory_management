@@ -46,21 +46,5 @@
     </footer>
 
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-    <script>
-        const productos = JSON.parse(localStorage.getItem('productos'));
-
-        const inventoryTable = document.getElementById('inventoryTable');
-
-        productos.forEach(producto => {
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${producto.id}</td>
-                <td>${producto.nombre}</td>
-                <td>${producto.cantidad}</td>
-            `;
-            inventoryTable.appendChild(row);
-        });
-    </script>
 </body>
 </html>

@@ -1,31 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Gestión de Inventario</title>
-        <link rel="stylesheet" href="{{ url_for('.static', filename='css/historial.css') }}">
-</head>
-<body>
-    <div class="sidebar">
-        <div class="user">
-                <img src="{{ url_for('.static', filename='img/usuario.png') }}" alt="Admin">
-            <span>Admin</span>
-        </div>
-        <nav>
-            <ul>
-                    <li><a href="{{ url_for('core.index') }}"><img src="{{ url_for ('.static', filename='img/hogar.png')}}" alt="Inicio"></a></li>
-                    <li><a href="{{ url_for('transactions.create') }}"><img src="{{ url_for ('.static', filename='img/agregar.png')}}" alt="Agregar"></a></li>
-                    <li><a href="{{ url_for('transactions.index_in') }}"><img src="{{ url_for ('.static', filename='img/lista.png')}}" alt="Menú"></a></li>
-                    <li><a href="{{ url_for('core.index') }}"><img src="{{ url_for ('.static', filename='img/ajustes.png')}}" alt="Configuración"></a></li>
-            </ul>
-        </nav>
-    </div>
+{% extends 'base.html' %}
+
+{% block title %}Historial{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/historial.css') }}">
+{% endblock %}
+
+{% block content %}
     <div class="main-content">
         <h1>Historial</h1>
         <div class="tabs">
-                <button class="{{ 'active' if not out else '' }}"><a href="{{ url_for('transactions.index_in' ) }}">Entrada de productos</a></button>
-                <button class="{{ 'active' if out else '' }}"><a href="{{ url_for('transactions.index_out' ) }}">Salida de productos</a></button>
+                <a href="{{ url_for('transactions.index_in' ) }}"><button class="{{ 'active' if not out else '' }}">Entrada de productos</button></a>
+                <a href="{{ url_for('transactions.index_out' ) }}"><button class="{{ 'active' if out else '' }}">Salida de productos</button></a>
         </div>
         <div class="table-container">
             <table>
@@ -43,12 +29,11 @@
                             <td>{{ transaction.product_id }}</td>
                             <td>{{ transaction.product.product_name }}</td>
                             <td>{{ transaction.product_quantity }}</td>
-                            <td>{{ transaction.date }}</td>
+                            <td>{{ transaction.time_registered }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

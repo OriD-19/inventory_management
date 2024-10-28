@@ -1,40 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pantalla de Reportes</title>
-    <link rel="stylesheet" href="StyleReports.css">
-</head>
-<body>
-    <div class="container">
-        <div class="sidebar">
-            <div class="profile">
-                <img src="../alerts/static/img/usuario.png" alt="Usuario" class="profile-img">
-                <p>Admin</p>
-            </div>
-            <div class="menu">
-                <div class="icon">
-                    <img src="../alerts/static/img/hogar.png" alt="Inicio">
-                </div>
-                <p>Inicio</p>
+{% extends 'base.html' %}
 
-                <div class="icon">
-                    <img src="../alerts/static/img/agregar.png" alt="Añadir">
-                </div>
-                <p>Añadir</p>
+{%block styles %} 
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/styleReports.css') }}">
+{% endblock %}
+{% block title %}Reportes{% endblock %}
 
-                <div class="icon">
-                    <img src="../alerts/static/img/lista.png" alt="Lista">
-                </div>
-                <p>Lista</p>
-
-                <div class="icon">
-                    <img src="../alerts/static/img/ajustes.png" alt="Configuración">
-                </div>
-                <p>Configuración</p>
-            </div>
-        </div>
 
         <div class="main-content">
             <h1>Reportes</h1>

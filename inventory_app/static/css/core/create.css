@@ -1,0 +1,27 @@
+.elements {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.content-section h2 {
+    margin-top: 1rem;
+}
+
+.element-card {
+    padding: 1rem;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2em;
+
+    transition: all 0.3s;
+}
+
+.element-card:hover {
+    background-color: #f5f5f5;
+    transform: translate(0, -5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}

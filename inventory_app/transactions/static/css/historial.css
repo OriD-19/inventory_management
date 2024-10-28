@@ -6,8 +6,6 @@
 }
 
 body {
-    display: flex;
-    height: 100vh;
     background-color: #f2c8c8;
 }
 
@@ -58,9 +56,7 @@ nav ul li img {
 }
 
 .main-content {
-    width: 85%;
     padding: 30px;
-    background-color: #ffeaea;
 }
 
 h1 {

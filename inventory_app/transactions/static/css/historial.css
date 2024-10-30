@@ -9,52 +9,6 @@ body {
     background-color: #f2c8c8;
 }
 
-.sidebar {
-    background-color: #D1495B;
-    width: 15%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    color: white;
-}
-
-.user {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 40px;
-}
-
-.user img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-bottom: 10px;
-}
-
-.user span {
-    font-size: 18px;
-    font-weight: bold;
-}
-
-nav ul {
-    list-style: none;
-}
-
-nav ul li {
-    margin: 20px 0;
-}
-
-nav ul li a {
-    display: block;
-}
-
-nav ul li img {
-    width: 30px;
-    height: 30px;
-}
-
 .main-content {
     padding: 30px;
 }

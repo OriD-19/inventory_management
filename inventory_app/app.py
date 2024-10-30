@@ -27,6 +27,7 @@ def get_connection():
     return conn
 
 def create_app():
+
     app = Flask(__name__, template_folder='templates', static_folder='static')
     app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://"
     app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
@@ -63,6 +64,7 @@ def create_app():
     from inventory_app.account.routes import account
     from inventory_app.alerts.routes import alerts
     from inventory_app.core.routes import core
+    from inventory_app.reports.routes import reports
 
     app.register_blueprint(products, url_prefix='/products')
     app.register_blueprint(transactions, url_prefix='/transactions')
@@ -70,6 +72,7 @@ def create_app():
     app.register_blueprint(account, url_prefix='/account')
     app.register_blueprint(alerts, url_prefix='/alerts')
     app.register_blueprint(core, url_prefix='/')
+    app.register_blueprint(reports, url_prefix='/reports')
 
 
     migrate = Migrate(app, db)

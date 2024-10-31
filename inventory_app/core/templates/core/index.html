@@ -8,14 +8,58 @@
 
 {% block content %}
     <h1>Administrador de inventarios</h1>
-    <p>¡Bienvenido al sistema de inventarios!</p>
-
-    <p>You are {{ current_user.username }}</p>
-
-    <div class="dashboard">
-        <h2>Dashboard</h2>
-        {% for graph in graphs %}
-            <img src="data:image/png;base64,{{ graph }}" alt="Gráfico de producto" width="550px">
-        {% endfor %}
+    <div class="container-dashboard">
+        <div class="dashboard">
+            <h2>Dashboard</h2>
+            <div class="dashboard-graphs">
+                {% for graph in graphs %}
+                    <div class="graph-container">
+                        <img src="data:image/png;base64,{{ graph }}" alt="Gráfico de producto" width="500px">
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
+
+    <div class="container-dashboard">
+        <h2>Últimas transacciones</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre del producto</th>
+                        <th>Cantidad</th>
+                        <th>Fecha y hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transaction in transactions %}
+                        <tr>
+                            <td>{{ transaction.product.product_name }}</td>
+                            <td>{{ transaction.product_quantity }}</td>
+                            <td>{{ transaction.time_registered }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container-dashboard">
+        <h2>Ventas</h2>
+
+        <div class="container-ventas">
+            <div class="ventas">
+                <h3>Ventas totales</h3>
+                <p>${{ total_sales }}</p>
+            </div>
+            <div class="ventas">
+                <h3>Ventas del último mes</h3>
+                <p>${{ monthly_sales }}</p>
+            </div>
+        </div>
+        
+    </div>
+</div>
 {% endblock %}

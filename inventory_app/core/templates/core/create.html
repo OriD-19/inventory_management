@@ -31,6 +31,11 @@
             <box-icon type="solid" name='layer-plus'></box-icon>
             <span>Nuevo producto</span>
         </a>
+
+        <a class="element-card" href="{{ url_for('categories.create') }}">
+            <box-icon type="solid" name='category'></box-icon>
+            <span>Nueva categoría</span>
+        </a>
     </div>
 
     <hr>
@@ -40,6 +45,16 @@
         <a class="element-card" href="{{ url_for('alerts.create') }}">
             <box-icon type="solid" name='bell-plus'></box-icon>
             <span>Nueva alerta de producto</span>
+        </a>
+    </div>
+
+    <hr>
+
+    <h2>Reportes</h2>
+    <div class="elements">
+        <a class="element-card" href="{{ url_for('reports.new_report') }}">
+            <box-icon type="solid" name='file-pdf'></box-icon>
+            <span>Nuevo reporte</span>
         </a>
     </div>
 

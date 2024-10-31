@@ -1,10 +1,90 @@
-.dashboard {
+.container-dashboard {
     background-color: white;
     border-radius: 10px;
     padding: 2rem;
     margin: 2rem 0;
 }
 
+.container-dashboard h2 {
+    margin-bottom: 2rem;
+}
+
+.dashboard-graphs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
 .dashboard h2 {
     margin-bottom: 1rem;
 }
+
+.graph-container {
+    border-radius: 20px;
+}
+
+.graph-container:nth-child(3) img {
+    width: 1000px;
+}
+
+.table-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead {
+    background-color: #D1495B;
+    color: white;
+}
+
+thead th {
+    padding: 15px;
+    font-size: 16px;
+}
+
+tbody tr {
+    border-bottom: 1px solid #f2c8c8;
+}
+
+tbody td {
+    padding: 15px;
+    font-size: 14px;
+}
+
+tbody tr:hover {
+    background-color: #f5baba;
+}
+
+.container-ventas {
+    display: flex;
+    gap: 3rem;
+}
+
+.container-ventas .ventas {
+    width: 100%;
+    background-color: var(--color-principal);
+    border-radius: 20px;
+    padding: 2rem;
+    color: white;
+}
+
+.container-ventas h3 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.container-ventas p {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+

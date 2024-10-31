@@ -5,7 +5,7 @@ from inventory_app.app import db, check_admin
 from inventory_app.products.models import Product
 from inventory_app.categories.models import Category
 
-products = Blueprint('products', __name__, template_folder='templates')
+products = Blueprint('products', __name__, template_folder='templates', static_folder="static")
 
 @products.route('/')
 @login_required

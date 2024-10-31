@@ -78,3 +78,34 @@ tbody td {
 tbody tr:hover {
     background-color: #f5baba;
 }
+
+.filter_by_product {
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 1rem;
+    width: fit-content;
+    margin-left: auto;
+}
+
+.filter_by_product * {
+    margin-right: 10px;
+}
+
+.filter_by_product label {
+    font-size: 16px;
+}
+
+.filter_by_product select {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.filter_by_product button {
+    background-color: #D1495B;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}

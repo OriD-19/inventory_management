@@ -1,0 +1,44 @@
+.accent {
+    color: var(--color-principal);
+}
+
+.heatmap-container {
+    display: flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+
+.heatmap {
+    width: 70vw;
+}
+
+.report-info {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    padding: 2rem;
+    font-size: 1.2em;
+}
+
+.report-info h3 {
+    font-size: 1.5em;
+    margin-bottom: 1rem;
+}
+
+.report-table {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.report-table, tr, td {
+    border: 1px solid #e0e0e0;
+    padding: 5px;
+}
+
+.report-table tr:nth-child(even) {
+    background-color: #eee;
+}

@@ -107,13 +107,29 @@ def validate_transaction_form(form):
 @login_required
 def index_in():
     transactions = TransactionHistory.query.filter_by(operation_type_id=1).all()
-    return render_template('transactions/index.html', transactions=transactions, out=False)
+    products = Product.query.all()
+    return render_template('transactions/index.html', products=products, transactions=transactions, out=False)
 
 @transactions.route('/out')
 @login_required
 def index_out():
     transactions = TransactionHistory.query.filter_by(operation_type_id=2).all()
-    return render_template('transactions/index.html', transactions=transactions, out=True)
+    products = Product.query.all()
+    return render_template('transactions/index.html', products=products, transactions=transactions, out=True)
+
+@transactions.route('/in/product/<int:id>', methods=['GET'])
+@login_required
+def show_in(id):
+    transactions = TransactionHistory.query.filter_by(product_id=id, operation_type_id=1).order_by(TransactionHistory.time_registered.desc()).all()
+    product = Product.query.get(id)
+    return render_template('transactions/show.html', product=product, transactions=transactions, out=False)
+
+@transactions.route('/out/product/<int:id>', methods=['GET'])
+@login_required
+def show_out(id):
+    transactions = TransactionHistory.query.filter_by(product_id=id, operation_type_id=2).order_by(TransactionHistory.time_registered.desc()).all()
+    product = Product.query.get(id)
+    return render_template('transactions/show.html', product=product, transactions=transactions, out=True)
 
 @transactions.route('/create/in', methods=['GET', 'POST'])
 @login_required

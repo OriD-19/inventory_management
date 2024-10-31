@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block styles %} 
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/newReport.css') }}">
+{% endblock %}
+
+{% block title %} Nuevo reporte {% endblock %}
+
+{% block content %}
+<main>
+    <h1>Nuevo reporte de producto</h1>
+
+    <section class="form-section">
+        <form action="{{ url_for('reports.generated_report' ) }}" method="POST">
+            <div class="form-group">
+                <label for="product_id">Producto para generar reporte</label>
+                <select name="product_id" id="product_id">
+                    {% for product in products %}
+                    <option value="{{ product.product_id }}">{{ product.product_name }} (Tx: {{ product.transactions | length}} )</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="date">Fecha de reporte (hasta la fecha actual)</label>
+
+                <div class="date_options">
+                    <button type="button" id="month">1 mes</button>
+                    <button type="button" id="six-months">6 meses</button>
+                    <button type="button" id="year">1 año</button>
+                </div>
+
+                <input type="date" name="date" id="date">
+            </div>
+
+            <button type="submit" class="submit-btn">
+                Generar Reporte
+            </button>
+
+        </form>
+    </section>
+</main>
+
+<script>
+    const monthBtn = document.getElementById('month');
+    const sixMonthsBtn = document.getElementById('six-months');
+    const yearBtn = document.getElementById('year');
+    const dateInput = document.getElementById('date');
+
+    monthBtn.addEventListener('click', () => {
+        const date = new Date();
+        date.setMonth(date.getMonth() - 1);
+        dateInput.value = date.toISOString().split('T')[0];
+    });
+
+    sixMonthsBtn.addEventListener('click', () => {
+        const date = new Date();
+        date.setMonth(date.getMonth() - 6);
+        dateInput.value = date.toISOString().split('T')[0];
+    });
+
+    yearBtn.addEventListener('click', () => {
+        const date = new Date();
+        date.setFullYear(date.getFullYear() - 1);
+        dateInput.value = date.toISOString().split('T')[0];
+    });
+</script>
+{% endblock %}
+

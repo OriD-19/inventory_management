@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block styles %} 
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/generatedReport.css') }}">
+{% endblock %}
+
+{% block title %} Reporte generado para {{ product.product_name }}{% endblock %}
+
+{% block content %}
+<h1>Reporte generado para <span class="accent">{{ product.product_name }}</span></h1>
+<h2>Desde el {{ from_date }}</h2>
+
+<div class="report_content">
+    <div class="heatmap-container">
+        <img src='data:image/png;base64,{{ heatmap }}'class="heatmap"/>
+    </div>
+
+    <div class="report-info">
+        <h3>Información del reporte</h3>
+        <div class="report-description">
+
+            <table class="report-table">
+                <tr>
+                    <td>Fecha de generación</td>
+                    <td>{{ date_now }}</td>
+                </tr>
+                <tr>
+                    <td>Producto</td>
+                    <td>{{ product.product_name }}</td>
+                </tr>
+                <tr>
+                    <td>Transacciones de entrada</td>
+                    <td>{{ input_transactions|length }}</td>
+                </tr>
+                <tr>
+                    <td>Transacciones de salida</td>
+                    <td>{{ output_transactions|length }}</td>
+                </tr>
+                <tr>
+                    <td>Total de productos comprados (entrado al inventario)</td>
+                    <td>{{ input_transactions | sum }}</td>
+                </tr>
+                <tr>
+                    <td>Total de productos vendidos (salido del inventario)</td>
+                    <td>{{ output_transactions | sum }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

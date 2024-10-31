@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}Historial de producto {{ product.product_name }}{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/historial.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="main-content">
+    <h1>Historial de producto {{ product.product_name }}</h1>
+    <div class="tabs">
+        <a href="{{ url_for('transactions.show_in', id=product.product_id ) }}"><button class="{{ 'active' if not out else '' }}">Entrada de {{product.product_name}}</button></a>
+        <a href="{{ url_for('transactions.show_out', id=product.product_id ) }}"><button class="{{ 'active' if out else '' }}">Salida de {{product.product_name}}</button></a>
+    </div>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Cantidad</th>
+                    <th>Fecha y hora</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.product_quantity }}</td>
+                    <td>{{ transaction.time_registered }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

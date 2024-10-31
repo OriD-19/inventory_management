@@ -1,33 +1,43 @@
 {% extends 'base.html' %}
 
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/productsIndex.css') }}">
+{% endblock %}
+
 {% block title %}
 Inventory-app
 {% endblock %}
 
 {% block content %}
-    <h1>Products</h1>
-    <table class="table" border=1>
+<h1>Products</h1>
+
+<div class="table-container">
+    <table>
         <thead>
             <tr>
-                <th>Product ID</th>
-                <th>Product Name</th>
-                <th>Description</th>
-                <th>Price</th>
+                <th>Nombre del producto</th>
                 <th>Stock</th>
+                <th>Precio</th>
+                <th>Categoría</th>
+                <th>Detalles</th>
             </tr>
         </thead>
         <tbody>
             {% for product in products %}
                 <tr>
-                    <td>{{ product.product_id }}</td>
                     <td>{{ product.product_name }}</td>
-                    <td>{{ product.description }}</td>
-                    <td>{{ product.price }}</td>
                     <td>{{ product.stock }}</td>
+                    <td>${{ product.price }}</td>
+                    <td>{{ product.category.category_name }}</td>
+                    <td><a href="{{ url_for('products.detail', product_id=product.product_id) }}">
+                            <box-icon name='list-ul' color='#000'></box-icon>
+                        </a>
+                    </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+</div>
+</div>
 
-    <h2><a href="{{ url_for('products.create') }}">Create a new product</a></h2>
 {% endblock %}

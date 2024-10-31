@@ -9,6 +9,19 @@
 {% block content %}
     <div class="main-content">
         <h1>Historial</h1>
+
+        <div class="filter_by_product">
+            <label for="product_id">Filtrar por producto</label>
+            <select name="product_id" id="product_id">
+                {% for product in products %}
+                    <option value="{{ product.product_id }}">{{ product.product_name }}</option>
+                {% endfor %}
+            </select>
+
+            <button type="button">Filtrar</button>
+        </div>
+
+
         <div class="tabs">
                 <a href="{{ url_for('transactions.index_in' ) }}"><button class="{{ 'active' if not out else '' }}">Entrada de productos</button></a>
                 <a href="{{ url_for('transactions.index_out' ) }}"><button class="{{ 'active' if out else '' }}">Salida de productos</button></a>
@@ -36,4 +49,13 @@
             </table>
         </div>
     </div>
+
+    <script>
+        const filterButton = document.querySelector('.filter_by_product button');
+        const select = document.querySelector('.filter_by_product select');
+
+        filterButton.addEventListener('click', () => {
+            window.location.href = `/transactions/in/product/${select.value}`;
+        });
+    </script>
 {% endblock %}

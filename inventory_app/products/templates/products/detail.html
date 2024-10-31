@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/detail.css') }}">
+{% endblock %}
+
+{% block title %}
+Detalle de producto {{ product.product_name }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ product.product_name }}</h1>
+
+<div class="details-container">
+    <div class="col">
+
+        <div class="group">
+            <h3>Nombre del producto</h3>
+            <p>{{ product.product_name }}</p>
+        </div>
+
+        <div class="group">
+
+            <h3>Categoría</h3>
+            <p>{{ product.category.category_name }}</p>
+        </div>
+
+        <div class="group">
+
+            <h3>Stock</h3>
+            <p>{{ product.stock }}</p>
+        </div>
+
+    </div>
+
+    <div class="col">
+
+        <div class="group">
+
+            <h3>Descripción</h3>
+            <p>{{ product.description }}</p>
+        </div>
+
+        <div class="group">
+
+            <h3>Precio</h3>
+            <p>${{ product.price }}</p>
+        </div>
+    </div>
+</div>
+
+<a href="{{ url_for('transactions.show_in', id=product.product_id )}}" class="transactions">Transacciones</a>
+
+{% endblock %}

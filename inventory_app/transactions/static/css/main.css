@@ -50,10 +50,6 @@ main {
     padding: 40px;
 }
 
-h1, h2 {
-    color: #D15756;
-}
-
 table {
     width: 100%;
     border-collapse: collapse;

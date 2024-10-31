@@ -1,0 +1,46 @@
+.details-container {
+    padding: 2rem;
+    width: 100%;
+    display: flex;
+    flex: 1;
+    justify-content: stretch;
+    gap: 2rem;
+}
+
+.details-container .col {
+    width: 100%;
+    border-radius: 2rem;
+    padding: 2rem;
+}
+
+.group {
+    margin: 15px 0;
+}
+
+.group h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.group p {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.2em;
+}
+
+a.transactions {
+    text-decoration: none;
+    color: white;
+    background-color: var(--color-principal);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    display: inline-block;
+
+}
+
+a.transactions:hover {
+    opacity: 0.8;
+}

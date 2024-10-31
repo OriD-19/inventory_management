@@ -37,5 +37,6 @@ que así sea, se enviará una alerta al correo electrónico del usuario que ha c
 - [x] Creación de las rutas de la aplicación
 - [x] Creación de las vistas de la aplicación
 - [x] Configuración del sistema de usuarios
-- [ ] Configuración de la generación de reportes en PDF
+- [x] Configuración de la generación de reportes
 - [x] Configuración del sistema de alertas
+- [ ] Página de detalle de productos

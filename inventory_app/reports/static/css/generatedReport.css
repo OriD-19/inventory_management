@@ -42,3 +42,17 @@
 .report-table tr:nth-child(even) {
     background-color: #eee;
 }
+
+.boton {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.boton:hover{
+    background-color: var(--color-bloques);
+    color: black;
+}

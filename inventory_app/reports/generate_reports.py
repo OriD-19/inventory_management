@@ -8,12 +8,10 @@ import matplotlib
 from sqlalchemy.sql import text
 import pandas
 
+sns.set_theme(palette="flare")
 matplotlib.use('agg')
-sns.set(rc={'figure.figsize':(18,10),})
 
 def generate_product_heatmap(db, from_date, product_id):
-
-
     # year difference, used for the amount of numbers per row
     from_year = int(from_date.split("-")[0])
     year_diff = 2024 - from_year
@@ -144,6 +142,7 @@ def generate_graph_most_bought(db):
     return data
 
 def generate_graph_most_sold(db):
+    sns.set(rc={'figure.figsize':(18,10),})
     a = text("""
             SELECT p.product_name, SUM(tr.product_quantity) 'Total de productos vendidos'
             FROM product p
@@ -194,7 +193,6 @@ def generate_graph_most_sold(db):
     
 
 def generate_curr_inventory_volume(db):
-    sns.set(rc={'figure.figsize':(10,5),})
     a = text("""
         SELECT p.product_name, p.stock
         FROM product p

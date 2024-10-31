@@ -36,7 +36,7 @@ def create():
         db.session.commit()
 
         flash(f"Alerta para producto {product_id} creada por usuario {current_user.username}", "success")
-        return redirect(url_for('alerts.index'))
+        return redirect(url_for('core.index'))
 
     users = User.query.all()
     return render_template('alerts/create.html', products=Product.query.all(), users=users)

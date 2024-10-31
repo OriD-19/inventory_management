@@ -45,7 +45,6 @@ def create_app():
     @login_manager.user_loader
     def load_user(user_id):
         from inventory_app.account.models import User
-
         return User.query.get(user_id)
 
     def unauthorized_handler():

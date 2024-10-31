@@ -1,7 +1,7 @@
-from flask import Blueprint, render_template, url_for, redirect
+from flask import Blueprint, render_template, url_for, redirect, flash
 from flask_login import current_user, login_required
 
-from inventory_app.app import db
+from inventory_app.app import db, check_admin
 from inventory_app.reports.generate_reports import generate_curr_inventory_volume, generate_graph_most_sold, generate_graph_most_bought
 from inventory_app.transactions.models import TransactionHistory
 
@@ -11,10 +11,8 @@ core = Blueprint('core', __name__, template_folder='templates', static_folder="s
 
 # main page needs to have the table of products, and a link to the detail of each product
 @core.route('/')
+@login_required
 def index():
-
-    if not current_user.is_authenticated:
-        return redirect(url_for('account.login'))
 
     graph1 = generate_graph_most_sold(db)
     graph2 = generate_graph_most_bought(db)
@@ -40,5 +38,10 @@ def index():
 @core.route('/create')
 @login_required
 def create():
+
+    if not check_admin(current_user):
+        flash("No estas autorizado para ver esta página", "warning")
+        return redirect(url_for('core.index'))
+
     return render_template('core/create.html')
 

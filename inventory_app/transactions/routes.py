@@ -1,8 +1,8 @@
 from email.mime.nonmultipart import MIMENonMultipart
 from flask import flash, request, render_template, redirect, url_for, Blueprint
-from flask_login import login_required
+from flask_login import login_required, current_user
 
-from inventory_app.app import db
+from inventory_app.app import db, check_admin
 from inventory_app.products.models import Product
 from inventory_app.alerts.models import Alert
 from inventory_app.transactions.models import OperationType, TransactionHistory
@@ -134,8 +134,12 @@ def show_out(id):
 @transactions.route('/create/in', methods=['GET', 'POST'])
 @login_required
 def create_in():
-    if request.method == 'POST':
 
+    if not check_admin(current_user):
+        flash("No estas autorizado para ver esta página", "warning")
+        return redirect(url_for('transactions.index_in'))
+
+    if request.method == 'POST':
         errors, date_time = validate_transaction_form(request.form)
 
         if not len(dict.keys(errors)) == 0:
@@ -158,6 +162,11 @@ def create_in():
 @transactions.route('/create/out', methods=['GET', 'POST'])
 @login_required
 async def create_out():
+
+    if not check_admin(current_user):
+        flash("No estas autorizado para ver esta página", "warning")
+        return redirect(url_for('transactions.index_out'))
+
     if request.method == 'POST':
 
         errors, date_time = validate_transaction_form(request.form)

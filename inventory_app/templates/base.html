@@ -58,11 +58,12 @@
                     <span>Transacciones</span>
                 </a>
 
-                <a href="{{ url_for('core.create') }}" class="nav-link">
-                    <box-icon type='solid' name='file-plus' color="white"></box-icon>
-                    <span>Crear</span>
-                </a>
-
+                    {% if current_user.user_role.user_role == 'admin' %}
+                    <a href="{{ url_for('core.create') }}" class="nav-link">
+                        <box-icon type='solid' name='file-plus' color="white"></box-icon>
+                        <span>Crear</span>
+                    </a>
+                    {% endif %}
             </nav>
 
             <div class="logout">

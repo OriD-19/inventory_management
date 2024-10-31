@@ -9,7 +9,6 @@ from sqlalchemy.sql import text
 import pandas
 
 matplotlib.use('agg')
-sns.set(rc={'figure.figsize':(10,5),})
 
 def generate_product_heatmap(db, from_date, product_id):
 
@@ -97,6 +96,7 @@ def generate_product_heatmap(db, from_date, product_id):
     return data
 
 def generate_graph_most_bought(db):
+    sns.set(rc={'figure.figsize':(10,5),})
     a = text("""
             SELECT p.product_name, SUM(tr.product_quantity) 'Total de productos comprados'
             FROM product p
@@ -145,6 +145,7 @@ def generate_graph_most_bought(db):
     return data
 
 def generate_graph_most_sold(db):
+    sns.set(rc={'figure.figsize':(10,5),})
     a = text("""
             SELECT p.product_name, SUM(tr.product_quantity) 'Total de productos vendidos'
             FROM product p
@@ -195,7 +196,7 @@ def generate_graph_most_sold(db):
     
 
 def generate_curr_inventory_volume(db):
-
+    sns.set(rc={'figure.figsize':(10,5),})
     a = text("""
         SELECT p.product_name, p.stock
         FROM product p

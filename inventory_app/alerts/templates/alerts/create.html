@@ -24,6 +24,13 @@
                     {% endfor %}
                 </select>
 
+                <label for="user_id">Indique a qué usuario quiere añadir la alerta</label>
+                <select name="user_id" id="user_id">
+                    {% for user in users %}
+                    <option value="{{ user.user_id }}">{{ user.username }} - {{ user.user_role.user_role }}</option>
+                    {% endfor %}
+                </select>
+
                 <label for="min_quant">Especifique la cantidad de producto que considere bajo stock, para enviar una alerta. Cuando el producto baje de esta cantidad, recibirá un correo electrónico</label>
                 <input id="min_quant" type="number" name="min_product_stock" placeholder="Cantidad mínima">
                 <button type="submit" class="alerta-boton">Crear Alerta</button>

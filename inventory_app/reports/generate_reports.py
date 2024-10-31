@@ -9,6 +9,7 @@ from sqlalchemy.sql import text
 import pandas
 
 matplotlib.use('agg')
+sns.set(rc={'figure.figsize':(18,10),})
 
 def generate_product_heatmap(db, from_date, product_id):
 
@@ -77,7 +78,6 @@ def generate_product_heatmap(db, from_date, product_id):
     df = pandas.DataFrame(months, index=[str(i) for i in range(from_year, 2024+1)])
 
     # create the heatmap
-    sns.set(rc={'figure.figsize':(18,10),})
     g = sns.heatmap(df, cmap="Reds", annot=True, fmt="d")
 
     g.set_title("Cantidad de productos vendidos por mes y año", fontsize=30)
@@ -96,7 +96,6 @@ def generate_product_heatmap(db, from_date, product_id):
     return data
 
 def generate_graph_most_bought(db):
-    sns.set(rc={'figure.figsize':(10,5),})
     a = text("""
             SELECT p.product_name, SUM(tr.product_quantity) 'Total de productos comprados'
             FROM product p
@@ -145,7 +144,6 @@ def generate_graph_most_bought(db):
     return data
 
 def generate_graph_most_sold(db):
-    sns.set(rc={'figure.figsize':(10,5),})
     a = text("""
             SELECT p.product_name, SUM(tr.product_quantity) 'Total de productos vendidos'
             FROM product p

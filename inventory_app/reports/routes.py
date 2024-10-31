@@ -24,15 +24,15 @@ def new_report():
 def generated_report():
 
     if not check_admin(current_user):
-        flash('You need to be an admin to access this page')
+        flash('No estas autorizado para ver esta página', "error")
         return redirect(url_for('products.list_products'))
 
     if not request.form['date']:
-        flash('Please provide a date')
+        flash('Por favor, ingresa una fecha', "error")
         return redirect(url_for('reports.new_report'))
 
     if not request.form['product_id']:
-        flash('Please provide a product')
+        flash('Por favor, ingresa un producto', "error")
         return redirect(url_for('reports.new_report'))
 
     # grab all the transactions for the product in the given date

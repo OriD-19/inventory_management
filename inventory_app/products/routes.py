@@ -25,7 +25,7 @@ def detail(product_id):
 @login_required
 def create():
     if not check_admin(current_user):
-        flash("You are not authorized to view this page.")
+        flash("No estas autorizado para ver esta página", "error")
         return redirect(url_for('products.index'))
 
     if request.method == 'POST':

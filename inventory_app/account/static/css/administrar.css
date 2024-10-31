@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');admini
+
+:root {
+    --fuente: "Poppins", sans-serif;
+    --color-principal: #D1495B;
+    --color-fuente: #000000;
+    --color-fondo: #FFECEF;
+    --color-bloques: #D9D9D9;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente);
+}
+
+#profile-icon {
+    background-color: var(--color-fondo);
+    border: var(--color-fondo) solid 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.Administrar-perfil {
+    width: 85%;
+    margin-left: 15%;
+    padding: 20px;
+    background-color: var(--color-fondo);
+}
+
+.contenido-administrar {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.table {
+    width: 90%;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.user-table th, .user-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+    background-color: #d14d5a;
+    color: white;
+}
+
+.user-table td {
+    background-color: #f5f5f5;
+}
+
+.edit-button, .delete-button {
+    background-color: #d14d5a;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.edit-button:hover, .delete-button:hover {
+    background-color: #b63747;
+}
+
+.form-container {
+    width: 60%;
+    display: none;
+    background-color: #e0e0e0;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+
+a{
+    text-decoration: none;
+    color: var(--color-fondo);
+}
+
+a:hover{
+    color: var(--color-fuente);
+}
+
+
+.form-container h2 {
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.cancel-button {
+    background-color: #999;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.cancel-button:hover {
+    background-color: #777;
+}
+
+.save-button {
+    background-color: var(--color-principal);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.save-button:hover {
+    background-color: #b63747;
+}
+
+.boton {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.boton:hover{
+    background-color: var(--color-bloques);
+    color: var(--color-fuente);
+}
+
+.menu-ajustes {
+    margin-bottom: 2rem;
+}

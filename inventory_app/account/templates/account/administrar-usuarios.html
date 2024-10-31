@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/administrar.css') }}">
+{% endblock %}
+
+{% block title %}Administrador de usuarios{% endblock %}
+
+{% block content %}
+
+<div class="Administrar-perfil">
+    <h1>Ajustes</h1>
+    <div class="menu-ajustes">
+        <a class="boton" href="{{ url_for('account.manage_users') }}">Administrar usuarios</a>
+        <a class="boton" href="{{ url_for('account.profile') }}">Perfil de usuario</a>
+    </div>
+
+    <div class="contenido-administrar">
+        <h2>Administrar Usuarios</h2>
+        <div class="table">
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Id de usuario</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Permisos</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="user-table-body">
+                    {% for user in users %}
+                        <tr id="usuario-{{ user.user_id }}">
+                            <td class="usuario-id">{{ user.user_id }}</td>
+                            <td class="usuario-nombre">{{ user.username }}</td>
+                            <td class="usuario-correo">{{ user.email }}</td>
+                            <td class="usuario-permisos">{{ user.user_role.user_role }}</td>
+                            <td>
+                                <button type="button" class="edit-button" onclick="editarUsuario({{ user.user_id }})">Editar</button>
+                                <button type="button" class="delete-button" onclick="eliminarUsuario({{ user.user_id }})">Eliminar</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-container" id="edit-form" style="display: none;">
+            <h2>Editar Usuario</h2>
+            <form id="edit-user-form" method="POST" action="{{ url_for('account.edit_user') }}">
+                <label for="user_id">Id de usuario</label>
+
+                <input name="user_id" type="number" id="user_id" readonly/>
+
+                <label for="edit-nombre">Nombre de usuario</label>
+                <input name="username" type="text" id="edit-nombre" placeholder="Ingrese su nombre completo">
+
+                <label for="edit-correo">Correo</label>
+                <input name="email" type="email" id="edit-correo" placeholder="Ingrese su correo electrónico">
+
+                <label for="edit-permisos">Permisos</label>
+                <select id="edit-permisos" name="role">
+                    {% for role in roles %}
+                    <option value="{{ role.user_role_id }}">{{ role.user_role }}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit" class="save-button">Guardar Cambios</button>
+                <button type="button" class="cancel-button" onclick="hideEditForm()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+    <script src="{{ url_for('.static', filename='js/administrar.js') }}" defer></script>
+    <script>
+        function eliminarUsuario(index) {
+            formData = new FormData();
+            formData.append("user_id", index);
+
+            // add opacity to the element being deleted
+            document.querySelector("#usuario-" + index).style.opacity = 0.5;
+
+            fetch("{{ url_for('account.delete_user') }}", {
+                method: 'POST',
+                body: formData
+                // then reload the current page to update the list of users
+            }).then(() => {
+                window.location.reload();
+            });
+        }
+
+    </script>
+</div>
+
+{% endblock %}

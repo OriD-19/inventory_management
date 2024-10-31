@@ -9,7 +9,6 @@ from sqlalchemy.sql import text
 import pandas
 
 matplotlib.use('agg')
-sns.set_theme()
 sns.set(rc={'figure.figsize':(10,5),})
 
 def generate_product_heatmap(db, from_date, product_id):
@@ -79,12 +78,12 @@ def generate_product_heatmap(db, from_date, product_id):
     df = pandas.DataFrame(months, index=[str(i) for i in range(from_year, 2024+1)])
 
     # create the heatmap
-    sns.set(rc={'figure.figsize':(15,10),})
+    sns.set(rc={'figure.figsize':(18,10),})
     g = sns.heatmap(df, cmap="Reds", annot=True, fmt="d")
 
-    g.set_title("Cantidad de productos vendidos por mes y año")
-    g.set_xlabel("Mes")
-    g.set_ylabel("Año")
+    g.set_title("Cantidad de productos vendidos por mes y año", fontsize=30)
+    g.set_xlabel("Mes", fontsize=20)
+    g.set_ylabel("Año", fontsize=20)
 
     buf = BytesIO()
     g.figure.savefig(buf, format="png")
@@ -176,6 +175,7 @@ def generate_graph_most_sold(db):
     })
     print(df)
 
+    sns.set_theme(palette="flare")
     g = sns.barplot(data=df, x="product_list", y="product_quantity")
     g.set(xlabel="Productos", ylabel="Ventas (Salidas)")
 
@@ -235,6 +235,12 @@ def generate_curr_inventory_volume(db):
 
     fig, ax = plt.subplots()
     ax.pie(df2.product_quantity, labels=df2.product_list, autopct='%1.1f%%')
+    # set_title
+    ax.set_title("Distribución de inventario")
+
+    for item in ([ax.title, ax.xaxis.label, ax.yaxis.label] +
+        ax.get_xticklabels() + ax.get_yticklabels()):
+        item.set_fontsize(20)
 
     buf = BytesIO()
     fig.savefig(buf, format="png")

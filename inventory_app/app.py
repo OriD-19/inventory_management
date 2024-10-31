@@ -49,7 +49,7 @@ def create_app():
         return User.query.get(user_id)
 
     def unauthorized_handler():
-        flash("You must be logged in to view this page.")
+        flash("Inicia sesión para acceder a esta página", "warning")
         return redirect(url_for('account.login'))
 
 

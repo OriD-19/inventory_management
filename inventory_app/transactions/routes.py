@@ -83,7 +83,7 @@ def check_send_alert(product):
             res = send_email(str(os.environ.get('GMAIL_ACCOUNT')), user, product)            
 
             if not res:
-                flash("Error al enviar el correo, revisa la configuración de tu cuenta de correo")
+                flash("Error al enviar el correo, revisa la configuración de tu cuenta de correo", "error")
 
 def validate_transaction_form(form):
     validForm = True
@@ -150,6 +150,7 @@ def create_in():
         db.session.add(transaction)
         db.session.commit()
 
+        flash('Transacción registrada exitosamente', 'success')
         return redirect(url_for('transactions.index_in'))
 
     return render_template('transactions/entrada.html', products=Product.query.all(), errors={})
@@ -178,6 +179,7 @@ async def create_out():
 
         check_send_alert(product)
 
+        flash('Transacción registrada exitosamente', 'success')
         return redirect(url_for('transactions.index_out'))
 
     return render_template('transactions/salida.html', products=Product.query.all(), errors={})

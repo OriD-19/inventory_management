@@ -1,27 +1,37 @@
 {% extends 'base.html' %}
 
+{% block styles %} 
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/index.css' ) }}">
+{% endblock %}
+
 {% block title %}
-Inventory-app
+Categorías
 {% endblock %}
 
 {% block content %}
-    <h1>Categories</h1>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Category ID</th>
-                <th>Category Name</th>
-                <th>Category Description</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for category in categories %}
+    <h1>Categorías</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
                 <tr>
-                    <td>{{ category.id }}</td>
-                    <td>{{ category.category_name }}</td>
-                    <td>{{ category.category_description }}</td>
+                    <th>Nombre de la categoría</th>
+                    <th>Cantidad de productos</th>
+                    <th>Ver productos</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                <tr>
+                    <td>{{ category.category_name }}</td>
+                    <td>{{ category.products | length }}</td>
+                    <td><a href="{{ url_for('categories.products_category', category_id=category.category_id) }}">
+                            <box-icon name='list-ul' color='#000'></box-icon>
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

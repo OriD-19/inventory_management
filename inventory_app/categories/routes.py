@@ -4,15 +4,21 @@ from flask_login import login_required
 from inventory_app.app import db
 from inventory_app.categories.models import Category
 
-categories = Blueprint('categories', __name__, template_folder='templates')
+categories = Blueprint('categories', __name__, template_folder='templates', static_folder='static')
 
 @categories.route('/')
 @login_required
 def index():
     categories = Category.query.all()
-    for category in categories:
-        print(category.products)
     return render_template('categories/index.html', categories=categories)
+
+@categories.route('/products/<int:category_id>')
+@login_required
+def products_category(category_id):
+    category = Category.query.get(category_id)
+    products = category.products
+
+    return render_template('categories/products_category.html', products=products, category=category)
 
 @categories.route('/create', methods=['GET', 'POST'])
 @login_required

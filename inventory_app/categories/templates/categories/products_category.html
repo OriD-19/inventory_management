@@ -1,17 +1,16 @@
 {% extends 'base.html' %}
 
 {% block styles %}
-<link rel="stylesheet" href="{{ url_for('.static', filename='css/productsIndex.css') }}">
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/listProducts.css' ) }}">
 {% endblock %}
 
-{% block title %}
-Inventory-app
-{% endblock %}
+{% block title %}Categoria {{ category.category_name }}{% endblock %}
 
 {% block content %}
-<h1>Products</h1>
-
+<h1>Lista de productos dentro de la categoría {{ category.category_name }}</h1>
 <div class="table-container">
+
+
     <table>
         <thead>
             <tr>
@@ -38,5 +37,4 @@ Inventory-app
         </tbody>
     </table>
 </div>
-
 {% endblock %}

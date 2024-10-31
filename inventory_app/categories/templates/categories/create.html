@@ -1,13 +1,25 @@
 {% extends 'base.html' %}
 
-{% block title %}Create Category{% endblock %}
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/createCategory.css') }}">
+{% endblock %}
+
+{% block title %}Crear una nueva categoría{% endblock %}
 
 {% block content %}
-    <h1>Create Category</h1>
-    <form method="POST" action="{{ url_for('categories.create') }}">
-        <label for="category">Category Name</label>
-        <input type="text" name="category" id="category">
+<h1>Crear una nueva categoría</h1>
 
-        <input type="submit" value="Create Category">
+<section class="form-section">
+    <h2>Nueva Categoría</h2>
+    <form id="salidaForm" method="POST" action="{{ url_for('transactions.create_out') }}">
+
+        <div class="form-group">
+            <label for="category_name">Nombre de la categoría</label>
+            <input type="text" id="category_name" name="category_name" required/>
+        </div>
+
+        <button type="submit" class="submit-btn">Registrar Categoría</button>
     </form>
+</section>
+
 {% endblock %}

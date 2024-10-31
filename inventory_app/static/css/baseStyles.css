@@ -153,3 +153,42 @@ h1 {
     letter-spacing: 1px;
     text-transform: uppercase;
 }
+
+.flash-messages {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 5px;
+    background-color: white;
+}
+
+.flash-messages.warning {
+    background-color: #FFD700;
+}
+.flash-messages.error {
+    background-color: #FF6347;
+}
+.flash-messages.success {
+    background-color: #90EE90;
+}
+
+.flash-message {
+    width: 95%;
+    margin-left: 2rem;
+    font-size: 1.2em;
+}
+.flash-close {
+    width: 5%;
+}
+
+#close-flash {
+    cursor: pointer;
+    background: none;
+    border: none;
+}

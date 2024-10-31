@@ -31,6 +31,7 @@
                         <th>Nombre del producto</th>
                         <th>Cantidad</th>
                         <th>Fecha y hora</th>
+                        <th>Tipo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,6 +40,7 @@
                             <td>{{ transaction.product.product_name }}</td>
                             <td>{{ transaction.product_quantity }}</td>
                             <td>{{ transaction.time_registered }}</td>
+                            <td>{{ transaction.operation.operation_name.capitalize() }}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -52,11 +54,11 @@
         <div class="container-ventas">
             <div class="ventas">
                 <h3>Ventas totales</h3>
-                <p>${{ total_sales }}</p>
+                <p>${{ "{:,.2f}".format(total_sales) }}</p>
             </div>
             <div class="ventas">
                 <h3>Ventas del último mes</h3>
-                <p>${{ monthly_sales }}</p>
+                <p>${{ "{:,.2f}".format(monthly_sales) }}</p>
             </div>
         </div>
         

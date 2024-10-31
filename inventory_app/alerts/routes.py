@@ -22,7 +22,7 @@ def index():
 def create():
 
     if current_user.user_role.user_role != "admin":
-        flash("You are not authorized to view this page.")
+        flash("No estas autorizado para ver esta página", "warning")
         return redirect(url_for('core.index'))
 
     if request.method == 'POST':
@@ -34,7 +34,7 @@ def create():
         db.session.add(alert)
         db.session.commit()
 
-        flash(f"Alert for product {product_id} created by user {current_user.username}")
+        flash(f"Alerta para producto {product_id} creada por usuario {current_user.username}", "success")
         return redirect(url_for('alerts.index'))
 
     return render_template('alerts/create.html', products=Product.query.all())

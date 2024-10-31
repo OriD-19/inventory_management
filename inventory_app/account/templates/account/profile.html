@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('.static', filename='css/perfil.css') }}">
+{% endblock %}
+
+{% block title %}Perfil de usuario {{ current_user.username }}{% endblock %}
+
+{% block content %}
+
+
+<div class="Administrar-perfil">
+    <h1>Ajustes</h1>
+
+    {% if admin %}
+    <div class="menu-ajustes">
+        <a class="boton" href="{{ url_for('account.manage_users' )}}">Administrar usuarios</a>
+    </div>
+    {% endif %}
+
+    <div class="contenido">
+        <div class="perfil">
+            <div class="foto-perfil">
+                <box-icon name="user-circle" type="solid"></box-icon>
+            </div>
+        </div>
+
+        <div class="personal-info">
+            <h2>Información personal</h2>
+            <label for="nombre">Nombre de usuario</label>
+            <input type="text" id="nombre" name="nombre" disabled value="{{ current_user.username }}">
+
+            <label for="correo">Correo</label>
+            <input type="email" id="correo" name="correo" disabled value="{{ current_user.email }}">
+
+            <label for="usuario">Rol</label>
+            <input type="text" id="usuario" name="usuario" disabled value="{{ 'admin' if admin else 'authorized' }}">
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--fuente);
+}
+
+#profile-icon {
+    background-color: var(--color-fondo);
+    border: var(--color-fondo) solid 10px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.Administrar-perfil {
+    padding: 20px;
+    background-color: var(--color-fondo);
+}
+
+.contenido {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    align-items: center;
+}
+
+
+.perfil {
+    width: 30%;
+    margin-right: 5%;
+}
+
+.foto-perfil box-icon {
+    text-align: center;
+    width: 40vh;
+    height: 40vh;
+    background-color: var(--color-bloques);
+    border-radius: 14px;
+}
+
+.foto-perfil button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border: none;
+    cursor: pointer;
+}
+
+.foto-perfil button:hover {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border: solid 1px var(--color-fuente);
+}
+
+.personal-info {
+    background-color: var(--color-bloques);
+    width: 60%;
+    height: auto;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.personal-info label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.personal-info input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--color-fondo);
+    border-radius: 5px;
+}
+
+a{
+    text-decoration: none;
+    color: var(--color-fondo);
+}
+
+.personal-info button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.personal-info button:hover {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border: solid 1px var(--color-fuente);
+}
+
+.boton {
+    background-color: var(--color-principal);
+    color: var(--color-fondo);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.boton:hover{
+    background-color: var(--color-bloques);
+    color: black;
+}
